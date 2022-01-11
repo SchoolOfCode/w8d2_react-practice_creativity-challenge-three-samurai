@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [question, setQuestion] = useState("20 + 20");
+  const [question, setQuestion] = useState("20 - 20");
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState(0);
 
@@ -20,9 +20,13 @@ function App() {
 
   }
   useEffect(()=>{
-    if(eval(question)){
-
+    console.log(eval(question));
+    if(eval(question) === parseInt(answer)){
+      setInput("");
+     return console.log("Correct!")
     }
+    console.log("Incorrect!")
+    setInput("");
   }, [answer])
 
   function randomQuestion(){
@@ -49,6 +53,7 @@ function App() {
       <Counter count={count} />
       <Question question={question} />
       <Input value={input} onChange={handleChange} setInput={setInput} onSubmitClick={onSubmitClick} />
+      <button onClick={randomQuestion}>Test Start</button>
     </>
   );
 }
