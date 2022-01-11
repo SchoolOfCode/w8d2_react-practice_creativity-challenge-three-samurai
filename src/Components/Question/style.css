@@ -1,0 +1,11 @@
+.question{
+    background-color: black;
+    border-radius: 3em;
+    align-items: center;
+    text-align: center;
+    width: 7em;
+    font-size: 3.5em;
+    outline: dashed 7px white;
+    position: absolute;
+    left: 13em;
+}

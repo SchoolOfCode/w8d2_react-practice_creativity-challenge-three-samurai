@@ -1,0 +1,9 @@
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+
+.game{
+    font-family: "Mochiy Pop P One";
+    color: white;
+    display: flexbox;
+    justify-content: center;
+}
+
