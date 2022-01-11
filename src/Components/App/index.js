@@ -2,11 +2,12 @@ import "./index.css";
 import Counter from "../Counter";
 import Question from "../Question";
 import Input from "../Input";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+
 
 function App() {
   const [count, setCount] = useState(0);
-  const [question, setQuestion] = useState("20 - 20");
+  const [question, setQuestion] = useState(randomQuestion());
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState(0);
 
@@ -19,13 +20,21 @@ function App() {
     setAnswer(input);
 
   }
+
+  const firstRender = useRef(true);
+
   useEffect(()=>{
+    if(firstRender.current === true){
+      firstRender.current = false
+      return
+    }
+    
     console.log(eval(question));
     if(eval(question) === parseInt(answer)){
       setInput("");
     console.log("Correct!")
       setCount(count+1)
-    randomQuestion();
+    setQuestion (randomQuestion());
     }else{
     console.log("Incorrect!")
     setInput("");
@@ -44,9 +53,9 @@ function App() {
       break;
       case 3 : operatorSymbol = "-"
       break;
-      default: operatorSymbol = "/";
+      default: operatorSymbol = "+";
     }
-    setQuestion(numOne + operatorSymbol + numTwo);
+    return (numOne + operatorSymbol + numTwo);
   };
 
 
