@@ -63,11 +63,11 @@ function App() {
 
 
   return (
-    <>
+    <div className="game">
       <Counter count={count} />
-      <Question question={question[0]} />
+      <Question question={question[0]} className="question"/>
       <Input value={input} onChange={handleChange} setInput={setInput} onSubmitClick={onSubmitClick} />
-    </>
+    </div>
   );
 }
 
