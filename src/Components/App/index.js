@@ -13,11 +13,30 @@ function App() {
     setInput(event.target.value);
   }
 
+  function randomQuestion(){
+    const numOne = Math.floor(Math.random() * 10 + 1);
+    const numTwo = Math.floor(Math.random() * 10 + 1);
+    const operatorNumber = Math.floor(Math.random() * 3 + 1);
+    let operatorSymbol = "";
+    switch(operatorNumber){
+      case 1 : operatorSymbol = "*";
+      break;
+      case 2 : operatorSymbol = "+";
+      break;
+      case 3 : operatorSymbol = "-"
+      break;
+      default: operatorSymbol = "/";
+    }
+    setQuestion(numOne + operatorSymbol + numTwo);
+  };
+
+
+
   return (
     <>
       <Counter count={count} />
       <Question question={question} />
-      <Input value={input} onChange={handleChange} />
+      <Input value={input} onChange={handleChange} setInput={setInput} />
     </>
   );
 }
