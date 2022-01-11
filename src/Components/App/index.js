@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [question, setQuestion] = useState("20 - 20");
+  const [question, setQuestion] = useState(randomQuestion());
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState(0);
 
@@ -20,12 +20,12 @@ function App() {
 
   }
   useEffect(()=>{
-    console.log(eval(question));
-    if(eval(question) === parseInt(answer)){
+    console.log(question)
+    if(question[1] === parseInt(answer)){
       setInput("");
     console.log("Correct!")
       setCount(count+1)
-    randomQuestion();
+    setQuestion(randomQuestion());
     }else{
     console.log("Incorrect!")
     setInput("");
@@ -37,16 +37,19 @@ function App() {
     const numTwo = Math.floor(Math.random() * 10 + 1);
     const operatorNumber = Math.floor(Math.random() * 3 + 1);
     let operatorSymbol = "";
+    let questionAnswer = 0;
     switch(operatorNumber){
       case 1 : operatorSymbol = "*";
+      questionAnswer = numOne*numTwo;
       break;
       case 2 : operatorSymbol = "+";
+      questionAnswer = numOne+numTwo;
       break;
-      case 3 : operatorSymbol = "-"
+      default : operatorSymbol = "-"
+      questionAnswer = numOne-numTwo;
       break;
-      default: operatorSymbol = "/";
     }
-    setQuestion(numOne + operatorSymbol + numTwo);
+    return[numOne + operatorSymbol + numTwo, questionAnswer]
   };
 
 
@@ -54,7 +57,7 @@ function App() {
   return (
     <>
       <Counter count={count} />
-      <Question question={question} />
+      <Question question={question[0]} />
       <Input value={input} onChange={handleChange} setInput={setInput} onSubmitClick={onSubmitClick} />
     </>
   );
