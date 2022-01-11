@@ -2,16 +2,28 @@ import "./index.css";
 import Counter from "../Counter";
 import Question from "../Question";
 import Input from "../Input";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
   const [question, setQuestion] = useState("20 + 20");
   const [input, setInput] = useState("");
+  const [answer, setAnswer] = useState(0);
 
   function handleChange(event) {
     setInput(event.target.value);
   }
+
+  function onSubmitClick(e){
+    e.preventDefault();
+    setAnswer(input);
+
+  }
+  useEffect(()=>{
+    if(eval(question)){
+
+    }
+  }, [answer])
 
   function randomQuestion(){
     const numOne = Math.floor(Math.random() * 10 + 1);
@@ -36,7 +48,7 @@ function App() {
     <>
       <Counter count={count} />
       <Question question={question} />
-      <Input value={input} onChange={handleChange} setInput={setInput} />
+      <Input value={input} onChange={handleChange} setInput={setInput} onSubmitClick={onSubmitClick} />
     </>
   );
 }
