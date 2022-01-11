@@ -2,7 +2,7 @@ import "./index.css";
 import Counter from "../Counter";
 import Question from "../Question";
 import Input from "../Input";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,8 +19,16 @@ function App() {
     setAnswer(input);
 
   }
+
+  const firstRender = useRef(true);
+
+
   useEffect(()=>{
     console.log(question)
+    if(firstRender.current === true){
+      firstRender.current = false;
+      return;
+    }
     if(question[1] === parseInt(answer)){
       setInput("");
     console.log("Correct!")
