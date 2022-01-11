@@ -23,10 +23,13 @@ function App() {
     console.log(eval(question));
     if(eval(question) === parseInt(answer)){
       setInput("");
-     return console.log("Correct!")
-    }
+    console.log("Correct!")
+      setCount(count+1)
+    randomQuestion();
+    }else{
     console.log("Incorrect!")
     setInput("");
+    }
   }, [answer])
 
   function randomQuestion(){
@@ -53,7 +56,6 @@ function App() {
       <Counter count={count} />
       <Question question={question} />
       <Input value={input} onChange={handleChange} setInput={setInput} onSubmitClick={onSubmitClick} />
-      <button onClick={randomQuestion}>Test Start</button>
     </>
   );
 }
