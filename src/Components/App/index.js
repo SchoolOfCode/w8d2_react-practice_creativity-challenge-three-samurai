@@ -30,7 +30,7 @@ function App() {
     console.log("Incorrect!")
     setInput("");
     }
-  }, [answer])
+  }, [answer, count, question])
 
   function randomQuestion(){
     const numOne = Math.floor(Math.random() * 10 + 1);
