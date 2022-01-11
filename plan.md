@@ -4,7 +4,7 @@ We want an app that displays a simple-random mathematical expression, and allows
 
 ### Bonus 1
 
-Display more complex expressions
+Have images awarded as points, so the app is displaying a funny image(fetching from API) for each correct answer (bonus points if images are floating)
 
 ### Bonus 2
 
@@ -12,7 +12,7 @@ Implement a timer, that runs out after a certain amount of time and re-starts th
 
 ### Bonus 3
 
-Have images awarded as points, so the app is displaying a funny image(fetching from API) for each correct answer (bonus points if images are floating)
+Display more complex expressions
 
 ## COMPONENTS TREE FOR MVP
 
